@@ -34,3 +34,11 @@ foreach (ManagementObject mo in searcher.Get())
     Console.WriteLine("Name: {0}", (string)mo["Name"]);
     Console.WriteLine("DriverVersion: {0}", (string)mo["DriverVersion"]);
 }
+
+searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DesktopMonitor");
+foreach (ManagementObject mo in searcher.Get())
+{
+    Console.WriteLine("Name: {0}", (string)mo["Name"]);
+    Console.WriteLine("ScreenHeight: {0}", (uint?)mo["ScreenHeight"] ?? 0);
+    Console.WriteLine("ScreenWidth: {0}", (uint?)mo["ScreenWidth"] ?? 0);
+}
