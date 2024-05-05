@@ -233,15 +233,31 @@ namespace WinTweaker
             var drives = DriveInfo.GetDrives();
             string storageInfo = string.Empty;
 
-            foreach (var drive in drives)
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive"))
             {
-                if (drive.IsReady)
+                foreach (ManagementObject wmi_HD in searcher.Get())
                 {
-                    storageInfo += $"{drive.Name.Replace(":", string.Empty).Replace("\\", string.Empty)}: {Math.Ceiling(drive.TotalSize / 1e9)} GB [{drive.VolumeLabel}] {Environment.NewLine}";
-                }
-            }
+                    using (var searcher2 = new ManagementObjectSearcher($"ASSOCIATORS OF {{Win32_DiskDrive.DeviceID='{wmi_HD["DeviceID"]}'}} WHERE AssocClass = Win32_DiskDriveToDiskPartition"))
+                    {
 
-            return storageInfo;
+                        foreach (ManagementObject wmi_DP in searcher2.Get())
+                        {
+                            using (var searcher3 = new ManagementObjectSearcher($"ASSOCIATORS OF {{Win32_DiskPartition.DeviceID='{wmi_DP["DeviceID"]}'}} WHERE AssocClass = Win32_LogicalDiskToPartition"))
+                            {
+
+                                foreach (ManagementObject wmi_LD in searcher3.Get())
+                                {
+                                    long driveSize = wmi_HD["Size"] == null ? 0 : Convert.ToInt64(wmi_HD["Size"]) / 1024 / 1024 / 1024;
+                                    Console.WriteLine($"Disk drive model: {wmi_HD["Model"]}, Drive letter: {wmi_LD["Name"]}");
+                                    storageInfo += $"{wmi_LD["Name"]} {driveSize} GB [{wmi_HD["Model"]}]{Environment.NewLine}";
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return storageInfo;
+            }
         }
 
         private string GetUsbPortsInfo()
