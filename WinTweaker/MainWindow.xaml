@@ -7,6 +7,54 @@
         mc:Ignorable="d"
         Title="WinTweaker" Height="450" Width="800">
     <Grid>
+        <StackPanel Margin="10,10,10,10">
+            <Label FontSize="14" FontWeight="Bold" Content="{Binding SystemInfoLabelText}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
+                <Label HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Content="{Binding OsVersionLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Content="{Binding MotherBoardLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Content="{Binding CpuLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Content="{Binding GpuLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" Content="{Binding MonitorLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0" Content="{Binding RamLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0" Content="{Binding StorageLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0" Content="{Binding UsbPortsLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0" Content="{Binding UptimeLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" Content="{Binding IpAddressLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0" Content="{Binding DownloadSpeedLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0" Content="{Binding PingLabelText}"/>
+
+                <Label HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Content="{Binding OsVersionInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" Content="{Binding MotherBoardInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Content="{Binding CpuInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" Content="{Binding GpuInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Content="{Binding MonitorInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="5" Grid.Column="1" Content="{Binding RamInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Content="{Binding StorageInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="7" Grid.Column="1" Content="{Binding UsbPortsInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="8" Grid.Column="1" Content="{Binding UptimeInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="9" Grid.Column="1" Content="{Binding IpAddressInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="10" Grid.Column="1" Content="{Binding DownloadSpeedInfo}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="11" Grid.Column="1" Content="0 ms"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

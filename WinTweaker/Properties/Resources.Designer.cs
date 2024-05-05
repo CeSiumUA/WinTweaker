@@ -59,5 +59,131 @@ namespace WinTweaker.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download speed (MB/s).
+        /// </summary>
+        internal static string DownloadSpeedString {
+            get {
+                return ResourceManager.GetString("DownloadSpeedString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to get entry.
+        /// </summary>
+        internal static string EntryRetreiveErrorString {
+            get {
+                return ResourceManager.GetString("EntryRetreiveErrorString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU.
+        /// </summary>
+        internal static string GraphicsCardString {
+            get {
+                return ResourceManager.GetString("GraphicsCardString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address.
+        /// </summary>
+        internal static string IpAddressString {
+            get {
+                return ResourceManager.GetString("IpAddressString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monitor.
+        /// </summary>
+        internal static string MonitorString {
+            get {
+                return ResourceManager.GetString("MonitorString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motherboard.
+        /// </summary>
+        internal static string MotherBoardString {
+            get {
+                return ResourceManager.GetString("MotherBoardString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operating System.
+        /// </summary>
+        internal static string OperatingSystemString {
+            get {
+                return ResourceManager.GetString("OperatingSystemString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping (ms).
+        /// </summary>
+        internal static string PingString {
+            get {
+                return ResourceManager.GetString("PingString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU.
+        /// </summary>
+        internal static string ProcessorString {
+            get {
+                return ResourceManager.GetString("ProcessorString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RAM.
+        /// </summary>
+        internal static string RandomAccessMemoryString {
+            get {
+                return ResourceManager.GetString("RandomAccessMemoryString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage.
+        /// </summary>
+        internal static string StorageString {
+            get {
+                return ResourceManager.GetString("StorageString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System information.
+        /// </summary>
+        internal static string SystemInformationString {
+            get {
+                return ResourceManager.GetString("SystemInformationString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uptime.
+        /// </summary>
+        internal static string UptimeString {
+            get {
+                return ResourceManager.GetString("UptimeString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USB.
+        /// </summary>
+        internal static string UsbString {
+            get {
+                return ResourceManager.GetString("UsbString", resourceCulture);
+            }
+        }
     }
 }
