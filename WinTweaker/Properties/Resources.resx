@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConnectedUsbDevices" xml:space="preserve">
+    <value>Connected devices</value>
+  </data>
   <data name="DownloadSpeedString" xml:space="preserve">
     <value>Download speed (MB/s)</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="RandomAccessMemoryString" xml:space="preserve">
     <value>RAM</value>
+  </data>
+  <data name="RemovableUsbDevicesString" xml:space="preserve">
+    <value>removable devices</value>
   </data>
   <data name="StorageString" xml:space="preserve">
     <value>Storage</value>

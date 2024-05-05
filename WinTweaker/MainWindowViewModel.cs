@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.ComponentModel;
+using System.IO;
 using System.Management;
 using WinTweaker.Properties;
 
@@ -151,14 +152,12 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     private string GetUsbPortsInfo()
     {
-        using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_USBControllerDevice");
-        int usbPorts = 0;
-        foreach (ManagementObject mo in searcher.Get())
-        {
-            usbPorts++;
-        }
+        using var searcher = new ManagementObjectSearcher(@"Select * From Win32_USBHub");
+        int usbPorts = searcher.Get().Count;
 
-        return usbPorts.ToString();
+        var removableDrivesCount = DriveInfo.GetDrives().Count(d => d.DriveType == DriveType.Removable);
+
+        return $"{Resources.ConnectedUsbDevices} - {usbPorts} ({Resources.RemovableUsbDevicesString} - {removableDrivesCount})";
     }
 
     private string GetUptimeInfo()

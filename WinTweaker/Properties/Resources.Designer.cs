@@ -61,6 +61,15 @@ namespace WinTweaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connected devices.
+        /// </summary>
+        internal static string ConnectedUsbDevices {
+            get {
+                return ResourceManager.GetString("ConnectedUsbDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download speed (MB/s).
         /// </summary>
         internal static string DownloadSpeedString {
@@ -147,6 +156,15 @@ namespace WinTweaker.Properties {
         internal static string RandomAccessMemoryString {
             get {
                 return ResourceManager.GetString("RandomAccessMemoryString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to removable devices.
+        /// </summary>
+        internal static string RemovableUsbDevicesString {
+            get {
+                return ResourceManager.GetString("RemovableUsbDevicesString", resourceCulture);
             }
         }
         
