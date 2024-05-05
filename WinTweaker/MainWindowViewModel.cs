@@ -227,16 +227,18 @@ namespace WinTweaker
 
         private string GetStorageInfo()
         {
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive"))
-            {
-                ulong totalStorage = 0;
-                foreach (ManagementObject mo in searcher.Get())
-                {
-                    totalStorage += (ulong)mo["Size"];
-                }
+            var drives = DriveInfo.GetDrives();
+            string storageInfo = string.Empty;
 
-                return $"{totalStorage / 1024 / 1024 / 1024} GB";
+            foreach (var drive in drives)
+            {
+                if (drive.IsReady)
+                {
+                    storageInfo += $"{drive.Name.Replace(":", string.Empty).Replace("\\", string.Empty)}: {Math.Ceiling(drive.TotalSize / 1e9)} GB [{drive.VolumeLabel}] {Environment.NewLine}";
+                }
             }
+
+            return storageInfo;
         }
 
         private string GetUsbPortsInfo()
@@ -253,16 +255,9 @@ namespace WinTweaker
 
         private string GetUptimeInfo()
         {
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem"))
-            {
-                foreach (ManagementObject mo in searcher.Get())
-                {
-                    var uptime = (string)mo["LastBootUpTime"];
-                    return $"{uptime} Days";
-                }
-            }
+            var uptime = TimeSpan.FromMilliseconds(Environment.TickCount);
 
-            return Resources.EntryRetreiveErrorString;
+            return $"{uptime.Days} {Resources.DaysString}, {uptime.Hours} {Resources.HoursString}, {uptime.Minutes} {Resources.MinutesString}, {uptime.Seconds} {Resources.SecondsString}";
         }
 
         private string GetIpAddressInfo()

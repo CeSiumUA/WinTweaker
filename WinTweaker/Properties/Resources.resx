@@ -120,52 +120,64 @@
   <data name="CalculatingValueString" xml:space="preserve">
     <value>Calculating...</value>
   </data>
-	<data name="ConnectedUsbDevicesString" xml:space="preserve">
+  <data name="ConnectedUsbDevicesString" xml:space="preserve">
     <value>Connected devices</value>
   </data>
-	<data name="DownloadSpeedString" xml:space="preserve">
+  <data name="DaysString" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="DownloadSpeedString" xml:space="preserve">
     <value>Download speed (MB/s)</value>
   </data>
-	<data name="EntryRetreiveErrorString" xml:space="preserve">
+  <data name="EntryRetreiveErrorString" xml:space="preserve">
     <value>Unable to get entry</value>
   </data>
-	<data name="GraphicsCardString" xml:space="preserve">
+  <data name="GraphicsCardString" xml:space="preserve">
     <value>GPU</value>
   </data>
-	<data name="IpAddressString" xml:space="preserve">
+  <data name="HoursString" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="IpAddressString" xml:space="preserve">
     <value>IP Address</value>
   </data>
-	<data name="MonitorString" xml:space="preserve">
+  <data name="MinutesString" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="MonitorString" xml:space="preserve">
     <value>Monitor</value>
   </data>
-	<data name="MotherBoardString" xml:space="preserve">
+  <data name="MotherBoardString" xml:space="preserve">
     <value>Motherboard</value>
   </data>
-	<data name="OperatingSystemString" xml:space="preserve">
+  <data name="OperatingSystemString" xml:space="preserve">
     <value>Operating System</value>
   </data>
-	<data name="PingString" xml:space="preserve">
+  <data name="PingString" xml:space="preserve">
     <value>Ping (ms)</value>
   </data>
-	<data name="ProcessorString" xml:space="preserve">
+  <data name="ProcessorString" xml:space="preserve">
     <value>CPU</value>
   </data>
-	<data name="RandomAccessMemoryString" xml:space="preserve">
+  <data name="RandomAccessMemoryString" xml:space="preserve">
     <value>RAM</value>
   </data>
-	<data name="RemovableUsbDevicesString" xml:space="preserve">
+  <data name="RemovableUsbDevicesString" xml:space="preserve">
     <value>removable devices</value>
   </data>
-	<data name="StorageString" xml:space="preserve">
+  <data name="SecondsString" xml:space="preserve">
+    <value>seconds</value>
+  </data>
+  <data name="StorageString" xml:space="preserve">
     <value>Storage</value>
   </data>
-	<data name="SystemInformationString" xml:space="preserve">
+  <data name="SystemInformationString" xml:space="preserve">
     <value>System information</value>
   </data>
-	<data name="UptimeString" xml:space="preserve">
+  <data name="UptimeString" xml:space="preserve">
     <value>Uptime</value>
   </data>
-	<data name="UsbString" xml:space="preserve">
+  <data name="UsbString" xml:space="preserve">
     <value>USB</value>
   </data>
 </root>

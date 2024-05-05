@@ -79,6 +79,15 @@ namespace WinTweaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to days.
+        /// </summary>
+        internal static string DaysString {
+            get {
+                return ResourceManager.GetString("DaysString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download speed (MB/s).
         /// </summary>
         internal static string DownloadSpeedString {
@@ -106,11 +115,29 @@ namespace WinTweaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        internal static string HoursString {
+            get {
+                return ResourceManager.GetString("HoursString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IP Address.
         /// </summary>
         internal static string IpAddressString {
             get {
                 return ResourceManager.GetString("IpAddressString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        internal static string MinutesString {
+            get {
+                return ResourceManager.GetString("MinutesString", resourceCulture);
             }
         }
         
@@ -174,6 +201,15 @@ namespace WinTweaker.Properties {
         internal static string RemovableUsbDevicesString {
             get {
                 return ResourceManager.GetString("RemovableUsbDevicesString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        internal static string SecondsString {
+            get {
+                return ResourceManager.GetString("SecondsString", resourceCulture);
             }
         }
         
