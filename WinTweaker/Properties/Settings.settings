@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WinTweaker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PingTestingHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">google.com</Value>
+    </Setting>
+    <Setting Name="DownloadSpeedTestingHost" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://2ip-ua-kyiv.prosto.net/512Mb.zip</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

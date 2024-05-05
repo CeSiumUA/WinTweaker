@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Management;
+using System.Net;
+using System.Net.NetworkInformation;
 using WinTweaker.Properties;
 
 namespace WinTweaker;
@@ -34,6 +37,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public string UptimeInfo => GetUptimeInfo();
     public string IpAddressInfo => GetIpAddressInfo();
     public string DownloadSpeedInfo => GetDownloadSpeedInfo();
+    public string PingInfo => GetPingInfo();
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -157,7 +161,7 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
         var removableDrivesCount = DriveInfo.GetDrives().Count(d => d.DriveType == DriveType.Removable);
 
-        return $"{Resources.ConnectedUsbDevices} - {usbPorts} ({Resources.RemovableUsbDevicesString} - {removableDrivesCount})";
+        return $"{Resources.ConnectedUsbDevicesString} - {usbPorts} ({Resources.RemovableUsbDevicesString} - {removableDrivesCount})";
     }
 
     private string GetUptimeInfo()
@@ -186,11 +190,53 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     private string GetDownloadSpeedInfo()
     {
-        using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PerfFormattedData_Tcpip_NetworkInterface");
-        foreach (ManagementObject mo in searcher.Get())
+        try
         {
-            var downloadSpeed = (ulong)mo["BytesReceivedPersec"];
-            return $"{downloadSpeed / 1024 / 1024} MB/s";
+            using WebClient client = new WebClient();
+            Stopwatch stopwatch = new Stopwatch();
+
+            string url = Settings.Default.DownloadSpeedTestingHost; // URL of a file to download
+            string filePath = ".512MB.zip"; // Local file path to save the file
+
+            stopwatch.Start();
+            client.DownloadFile(url, filePath);
+            stopwatch.Stop();
+
+            FileInfo fileInfo = new FileInfo(filePath);
+            long fileSizeInBytes = fileInfo.Length;
+            double fileSizeInKb = fileSizeInBytes / 1024.0;
+            double fileSizeInMb = fileSizeInKb / 1024.0;
+
+            double secondsPassed = stopwatch.Elapsed.TotalSeconds;
+            double speedInKbps = fileSizeInKb / secondsPassed;
+            double speedInMbps = fileSizeInMb / secondsPassed;
+
+            File.Delete(filePath);
+
+            if (speedInMbps < 1)
+            {
+                return $"{speedInKbps:0.00} Kbps";
+            }
+            else
+            {
+                return $"{speedInMbps:0.00} Mbps";
+            }
+        }
+        catch (Exception)
+        {
+            return Resources.EntryRetreiveErrorString;
+        }
+    }
+
+    private string GetPingInfo()
+    {
+        var pingSender = new Ping();
+        var testingHost = Settings.Default.PingTestingHost;
+        var reply = pingSender.Send(testingHost);
+
+        if(reply.Status == IPStatus.Success)
+        {
+            return $"ping = {reply.RoundtripTime} ms ({testingHost})";
         }
 
         return Resources.EntryRetreiveErrorString;

@@ -53,7 +53,7 @@
                 <Label HorizontalAlignment="Left" Grid.Row="8" Grid.Column="1" Content="{Binding UptimeInfo}"/>
                 <Label HorizontalAlignment="Left" Grid.Row="9" Grid.Column="1" Content="{Binding IpAddressInfo}"/>
                 <Label HorizontalAlignment="Left" Grid.Row="10" Grid.Column="1" Content="{Binding DownloadSpeedInfo}"/>
-                <Label HorizontalAlignment="Left" Grid.Row="11" Grid.Column="1" Content="0 ms"/>
+                <Label HorizontalAlignment="Left" Grid.Row="11" Grid.Column="1" Content="{Binding PingInfo}"/>
             </Grid>
         </StackPanel>
     </Grid>

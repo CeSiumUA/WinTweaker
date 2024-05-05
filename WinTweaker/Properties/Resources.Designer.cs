@@ -63,9 +63,9 @@ namespace WinTweaker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Connected devices.
         /// </summary>
-        internal static string ConnectedUsbDevices {
+        internal static string ConnectedUsbDevicesString {
             get {
-                return ResourceManager.GetString("ConnectedUsbDevices", resourceCulture);
+                return ResourceManager.GetString("ConnectedUsbDevicesString", resourceCulture);
             }
         }
         
