@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinTweaker"
         mc:Ignorable="d"
-        Title="WinTweaker" Height="450" Width="800">
+        Title="WinTweaker" Height="450" Width="800"
+        Loaded="Window_Loaded">
     <Grid>
         <StackPanel Margin="10,10,10,10">
             <Label FontSize="14" FontWeight="Bold" Content="{Binding SystemInfoLabelText}"/>

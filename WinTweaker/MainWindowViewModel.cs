@@ -11,6 +11,20 @@ namespace WinTweaker;
 
 public class MainWindowViewModel : INotifyPropertyChanged
 {
+    private string _osVersionInfo = Resources.CalculatingValueString;
+    private string _motherBoardInfo = Resources.CalculatingValueString;
+    private string _cpuInfo = Resources.CalculatingValueString;
+    private string _gpuInfo = Resources.CalculatingValueString;
+    private string _monitorInfo = Resources.CalculatingValueString;
+    private string _ramInfo = Resources.CalculatingValueString;
+    private string _storageInfo = Resources.CalculatingValueString;
+    private string _usbPortsInfo = Resources.CalculatingValueString;
+    private string _uptimeInfo = Resources.CalculatingValueString;
+    private string _ipAddressInfo = Resources.CalculatingValueString;
+    private string _downloadSpeedInfo = Resources.CalculatingValueString;
+    private string _pingInfo = Resources.CalculatingValueString;
+
+    private List<Task> _tasks = new();
 
     public string SystemInfoLabelText => Resources.SystemInformationString;
     public string OsVersionLabelText => Resources.OperatingSystemString;
@@ -26,24 +40,65 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public string DownloadSpeedLabelText => Resources.DownloadSpeedString;
     public string PingLabelText => Resources.PingString;
 
-    public string OsVersionInfo => GetOsVersion();
-    public string MotherBoardInfo => GetMotherBoardInfo();
-    public string CpuInfo => GetCpuInfo();
-    public string GpuInfo => GetGpuInfo();
-    public string MonitorInfo => GetMonitorInfo();
-    public string RamInfo => GetRamInfo();
-    public string StorageInfo => GetStorageInfo();
-    public string UsbPortsInfo => GetUsbPortsInfo();
-    public string UptimeInfo => GetUptimeInfo();
-    public string IpAddressInfo => GetIpAddressInfo();
-    public string DownloadSpeedInfo => GetDownloadSpeedInfo();
-    public string PingInfo => GetPingInfo();
+    public string OsVersionInfo { get => _osVersionInfo; set { _osVersionInfo = value; OnPropertyChanged(nameof(OsVersionInfo)); } }
+    public string MotherBoardInfo { get => _motherBoardInfo; set { _motherBoardInfo = value; OnPropertyChanged(nameof(MotherBoardInfo)); } }
+    public string CpuInfo { get => _cpuInfo; set { _cpuInfo = value; OnPropertyChanged(nameof(CpuInfo)); } }
+    public string GpuInfo { get => _gpuInfo; set { _gpuInfo = value; OnPropertyChanged(nameof(GpuInfo)); } }
+    public string MonitorInfo { get => _monitorInfo; set { _monitorInfo = value; OnPropertyChanged(nameof(MonitorInfo)); } }
+    public string RamInfo { get => _ramInfo; set { _ramInfo = value; OnPropertyChanged(nameof(RamInfo)); } }
+    public string StorageInfo { get => _storageInfo; set { _storageInfo = value; OnPropertyChanged(nameof(StorageInfo)); } }
+    public string UsbPortsInfo { get => _usbPortsInfo; set { _usbPortsInfo = value; OnPropertyChanged(nameof(UsbPortsInfo)); } }
+    public string UptimeInfo { get => _uptimeInfo; set { _uptimeInfo = value; OnPropertyChanged(nameof(UptimeInfo)); } }
+    public string IpAddressInfo { get => _ipAddressInfo; set { _ipAddressInfo = value; OnPropertyChanged(nameof(IpAddressInfo)); } }
+    public string DownloadSpeedInfo { get => _downloadSpeedInfo; set { _downloadSpeedInfo = value; OnPropertyChanged(nameof(DownloadSpeedInfo)); } }
+    public string PingInfo { get => _pingInfo; set { _pingInfo = value; OnPropertyChanged(nameof(PingInfo)); } }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void CalculateValues()
+    {
+        var osVersionTask = new Task(() => OsVersionInfo = GetOsVersion());
+        _tasks.Add(osVersionTask);
+
+        var motherBoardTask = new Task(() => MotherBoardInfo = GetMotherBoardInfo());
+        _tasks.Add(motherBoardTask);
+
+        var cpuTask = new Task(() => CpuInfo = GetCpuInfo());
+        _tasks.Add(cpuTask);
+
+        var gpuTask = new Task(() => GpuInfo = GetGpuInfo());
+        _tasks.Add(gpuTask);
+
+        var monitorTask = new Task(() => MonitorInfo = GetMonitorInfo());
+        _tasks.Add(monitorTask);
+
+        var ramTask = new Task(() => RamInfo = GetRamInfo());
+        _tasks.Add(ramTask);
+
+        var storageTask = new Task(() => StorageInfo = GetStorageInfo());
+        _tasks.Add(storageTask);
+
+        var usbPortsTask = new Task(() => UsbPortsInfo = GetUsbPortsInfo());
+        _tasks.Add(usbPortsTask);
+
+        var uptimeTask = new Task(() => UptimeInfo = GetUptimeInfo());
+        _tasks.Add(uptimeTask);
+
+        var ipAddressTask = new Task(() => IpAddressInfo = GetIpAddressInfo());
+        _tasks.Add(ipAddressTask);
+
+        var downloadSpeedTask = new Task(() => DownloadSpeedInfo = GetDownloadSpeedInfo());
+        _tasks.Add(downloadSpeedTask);
+
+        var pingTask = new Task(() => PingInfo = GetPingInfo());
+        _tasks.Add(pingTask);
+
+        _tasks.ForEach(t => t.Start());
     }
 
     private string GetOsVersion()
@@ -115,17 +170,14 @@ public class MainWindowViewModel : INotifyPropertyChanged
     private string GetMonitorInfo()
     {
         using ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DesktopMonitor");
-        foreach (ManagementObject mo in searcher.Get())
+        var monitorEntries = searcher.Get();
+        string monitorName = string.Empty;
+        foreach (ManagementObject mo in monitorEntries)
         {
-            var monitorName = (string?)mo["Name"];
-            var screenHeight = (uint?)mo["ScreenHeight"];
-            var screenWidth = (uint?)mo["ScreenWidth"];
-            if(monitorName == null || screenHeight == null || screenWidth == null)
-            {
-                return Resources.EntryRetreiveErrorString;
-            }
-            return $"{monitorName} ({screenWidth}x{screenHeight})";
+            monitorName = (string?)mo["Name"] ?? string.Empty;
         }
+
+        var screen = System.Windows.Forms.Screen.PrimaryScreen;
 
         return Resources.EntryRetreiveErrorString;
     }
@@ -190,15 +242,17 @@ public class MainWindowViewModel : INotifyPropertyChanged
 
     private string GetDownloadSpeedInfo()
     {
+        const string filePath = ".512MB.zip";
         try
         {
+            File.Delete(filePath);
+
             using WebClient client = new WebClient();
             Stopwatch stopwatch = new Stopwatch();
 
-            string url = Settings.Default.DownloadSpeedTestingHost; // URL of a file to download
-            string filePath = ".512MB.zip"; // Local file path to save the file
+            string url = Settings.Default.DownloadSpeedTestingHost;
 
-            stopwatch.Start();
+            stopwatch.Restart();
             client.DownloadFile(url, filePath);
             stopwatch.Stop();
 

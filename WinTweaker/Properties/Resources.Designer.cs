@@ -61,6 +61,15 @@ namespace WinTweaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculating....
+        /// </summary>
+        internal static string CalculatingValueString {
+            get {
+                return ResourceManager.GetString("CalculatingValueString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connected devices.
         /// </summary>
         internal static string ConnectedUsbDevicesString {

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CalculatingValueString" xml:space="preserve">
+    <value>Calculating...</value>
+  </data>
   <data name="ConnectedUsbDevicesString" xml:space="preserve">
     <value>Connected devices</value>
   </data>

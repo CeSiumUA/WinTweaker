@@ -22,5 +22,10 @@ namespace WinTweaker
             InitializeComponent();
             DataContext = _viewModel;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _viewModel.CalculateValues();
+        }
     }
 }
