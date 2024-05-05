@@ -27,7 +27,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0" Content="{Binding OsVersionLabelText}"/>
@@ -39,9 +38,8 @@
                 <Label HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0" Content="{Binding StorageLabelText}"/>
                 <Label HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0" Content="{Binding UsbPortsLabelText}"/>
                 <Label HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0" Content="{Binding UptimeLabelText}"/>
-                <Label HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" Content="{Binding IpAddressLabelText}"/>
-                <Label HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0" Content="{Binding DownloadSpeedLabelText}"/>
-                <Label HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0" Content="{Binding PingLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" Content="{Binding DownloadSpeedLabelText}"/>
+                <Label HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0" Content="{Binding PingLabelText}"/>
 
                 <Label HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Content="{Binding OsVersionInfo}"/>
                 <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Content="{Binding MotherBoardInfo}"/>
@@ -52,9 +50,8 @@
                 <Label HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" Content="{Binding StorageInfo}"/>
                 <Label HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" Content="{Binding UsbPortsInfo}"/>
                 <Label HorizontalAlignment="Left" Grid.Row="8" Grid.Column="1" Content="{Binding UptimeInfo}"/>
-                <Label HorizontalAlignment="Left" Grid.Row="9" Grid.Column="1" Content="{Binding IpAddressInfo}"/>
-                <Label HorizontalAlignment="Left" Grid.Row="10" Grid.Column="1" Content="{Binding DownloadSpeedInfo}"/>
-                <Label HorizontalAlignment="Left" Grid.Row="11" Grid.Column="1" Content="{Binding PingInfo}"/>
+                <Label HorizontalAlignment="Left" Grid.Row="9" Grid.Column="1" Content="{Binding DownloadSpeedInfo}"/>
+                <Label HorizontalAlignment="Left" Grid.Row="10" Grid.Column="1" Content="{Binding PingInfo}"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -201,6 +201,9 @@ namespace WinTweaker
                     }
                 }
 
+                var displayName = WindowsDisplayAPI.DisplayConfig.PathDisplayTarget.GetDisplayTargets().First().FriendlyName;
+                monitorName = string.IsNullOrEmpty(displayName) ? monitorName : displayName;
+
                 var screen = System.Windows.Forms.Screen.PrimaryScreen;
                 monitorName = string.IsNullOrEmpty(monitorName) ? screen.DeviceName : monitorName;
                 return $"{monitorName} @{refreshRate} ({screen.Bounds.Width} x {screen.Bounds.Height})";
