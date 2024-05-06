@@ -219,12 +219,14 @@ namespace WinTweaker
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory"))
             {
                 ulong totalRam = 0;
+                List<string> ramPartNumbers = new List<string>();
                 foreach (ManagementObject mo in searcher.Get())
                 {
                     totalRam += (ulong)mo["Capacity"];
+                    ramPartNumbers.Add((string)mo["PartNumber"]);
                 }
 
-                return $"{totalRam / 1024 / 1024 / 1024} GB";
+                return $"{totalRam / 1024 / 1024 / 1024} GB {string.Join(", ", ramPartNumbers.Distinct())}";
             }
         }
 
