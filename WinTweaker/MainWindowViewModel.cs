@@ -97,8 +97,8 @@ namespace WinTweaker
             var ipAddressTask = new Task(() => IpAddressInfo = GetIpAddressInfo());
             _tasks.Add(ipAddressTask);
 
-            var downloadSpeedTask = new Task(() => DownloadSpeedInfo = GetDownloadSpeedInfo());
-            _tasks.Add(downloadSpeedTask);
+            //var downloadSpeedTask = new Task(() => DownloadSpeedInfo = GetDownloadSpeedInfo());
+            //_tasks.Add(downloadSpeedTask);
 
             var pingTask = new Task(() => PingInfo = GetPingInfo());
             _tasks.Add(pingTask);
